@@ -41,4 +41,3 @@ def getgame(request, game_id: int):
     game = Game.objects.get(pk=game_id)
     players = get_Players(game_id)
     return {"game": game, "players": players}
-hu
