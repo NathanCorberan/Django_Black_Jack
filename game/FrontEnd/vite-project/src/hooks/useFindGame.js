@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 
-
-export default function useFindGame(game_id) {
-    const [gameData, setGameData] = useState({});  
+export default function useFindGame(game_id, onGameDataLoaded) {
+    const [gameData, setGameData] = useState({});
 
     const findGame = () => {
         fetch(`http://localhost:8000/api/game/${game_id}`, {
@@ -14,20 +13,19 @@ export default function useFindGame(game_id) {
         .then((response) => response.json())
         .then((data) => {
             setGameData(data);  
+            if (onGameDataLoaded) {
+                onGameDataLoaded(data.players);  // Appelle le callback avec les joueurs
+            }
         })
         .catch((reason) => {
             console.error(reason);
-            setGameData(null); 
+            setGameData(null);
         });
     };
 
     useEffect(() => {
         findGame();
-    },[game_id]);
+    }, [game_id]);
 
-    
     return { gameData };
-    
 }
-
-
