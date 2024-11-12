@@ -19,3 +19,8 @@ def score(player_id, score):
     player.save()
     return player
 
+def end_game(game_id):
+    game = Game.objects.get(pk=game_id)
+    game.eneded = True
+    game.save()
+    return game
