@@ -1,0 +1,14 @@
+Commande BACKEND : 
+conda activate projetBlackJack
+cd dossier jusqu'à BackEnd
+py .\manage.py runserver
+
+--------------------------------------------------------
+
+Commande FRONTEND : 
+cd dossier jusqu'à  FrontEnd\vite-project\ 
+npm run dev
+
+----------------------------------------------------------
+
+Nathan Corberan
